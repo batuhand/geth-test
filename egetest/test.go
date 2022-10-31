@@ -26,7 +26,11 @@ func testDecodeFunc(address string) []byte {
 	fmt.Println(src)
 	return src
 }
+
 func main() {
-	testHex("0x203560aCa0Aa5AAc09d9708CE29b60Aa3E4366A8") //20 bytes returned
-	testDecodeFunc("0x203560aCa0Aa5AAc09d9708CE29b60Aa3E4366A8")
+	//a := encodeArray()
+	//fmt.Println(a)
+
+	b, _ := testEncodeBytes()
+	fmt.Println(b)
 }
