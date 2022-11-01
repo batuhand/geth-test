@@ -33,4 +33,7 @@ func main() {
 
 	b, _ := testEncodeBytes()
 	fmt.Println(b)
+
+	//tx := createTx(100, 1667311668)
+	createTx(100, 1667311668)
 }
