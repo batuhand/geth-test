@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/big"
 	"sync"
 )
@@ -16,7 +15,7 @@ var encodeBufferPool = sync.Pool{
 type Transaction struct {
 	value1          uint64
 	value2          *big.Int
-	expiryTimestamp uint
+	expiryTimestamp uint64
 }
 
 /*
@@ -31,19 +30,14 @@ func (tx *Transaction) Value2() *big.Int      { return new(big.Int).Set(tx.inner
 func (tx *Transaction) ExpiryTimestamp() uint { return tx.inner.expiryTimestamp() }
 */
 
-func createTx(value1 uint64, expiry uint) {
+func createTx(value1 uint64, expiry uint64) Transaction {
 	//buftx := encodeBufferPool.Get().(*Transaction)
 	//defer encodeBufferPool.Put(buftx)
 
-	var val2 *big.Int
-	val2.SetUint64(946326465324)
+	val2 := big.NewInt(214453534947132)
+	//val2.SetUint64(13342432)
 
-	buftx := Transaction{
-		value1:          value1,
-		value2:          val2,
-		expiryTimestamp: expiry,
-	}
+	buftx := Transaction{value1, val2, expiry}
 
-	fmt.Printf("%+v/n", buftx)
-	//return buftx
+	return buftx
 }

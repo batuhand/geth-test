@@ -35,5 +35,6 @@ func main() {
 	fmt.Println(b)
 
 	//tx := createTx(100, 1667311668)
-	createTx(100, 1667311668)
+	tx := createTx(100, 1667311668)
+	fmt.Printf("%+v\n", tx)
 }
