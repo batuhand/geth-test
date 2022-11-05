@@ -37,4 +37,6 @@ func main() {
 	//tx := createTx(100, 1667311668)
 	tx := createTx(100, 1667311668)
 	fmt.Printf("%+v\n", tx)
+
+	changeTxHash()
 }

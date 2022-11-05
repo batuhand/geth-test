@@ -38,6 +38,8 @@ const (
 	HashLength = 32
 	// AddressLength is the expected length of the address
 	AddressLength = 20
+	//Length of my name in bytes: 0x6567650a - 4 bytes
+	NameLength = 4
 )
 
 var (
