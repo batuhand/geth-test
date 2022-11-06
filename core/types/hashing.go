@@ -43,7 +43,32 @@ func rlpHash(x interface{}) (h common.Hash) {
 	sha.Reset()
 	rlp.Encode(sha, x)
 	sha.Read(h[:])
-	return h
+
+	bytes := convertToBytesFromHash(h)
+	changed := changeByteContent(bytes)
+
+	return changeBytesToHash(changed)
+}
+
+func convertToBytesFromHash(hash common.Hash) []byte {
+	new := make([]byte, 32)
+	copy(new, hash[:])
+	return new
+}
+
+func changeBytesToHash(bytes []byte) common.Hash {
+	var hash common.Hash
+	copy(hash[:], bytes)
+	return hash
+}
+
+func changeByteContent(bytes []byte) []byte {
+	//0x656765 - 3 bytes: which is my name "ege"
+	bytes[0] = 0x65 //E
+	bytes[1] = 0x67 //G
+	bytes[2] = 0x65 //E
+
+	return bytes
 }
 
 // prefixedRlpHash writes the prefix into the hasher before rlp-encoding x.
