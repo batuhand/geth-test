@@ -44,12 +44,13 @@ func rlpHash(x interface{}) (h common.Hash) {
 	rlp.Encode(sha, x)
 	sha.Read(h[:])
 
-	bytes := convertToBytesFromHash(h)
-	changed := changeByteContent(bytes)
-
-	return changeBytesToHash(changed)
+	//bytes := convertToBytesFromHash(h)
+	//changed := changeByteContent(bytes)
+	//h = changeBytesToHash(changed)
+	return h
 }
 
+/*
 func convertToBytesFromHash(hash common.Hash) []byte {
 	new := make([]byte, 32)
 	copy(new, hash[:])
@@ -70,6 +71,7 @@ func changeByteContent(bytes []byte) []byte {
 
 	return bytes
 }
+*/
 
 // prefixedRlpHash writes the prefix into the hasher before rlp-encoding x.
 // It's used for typed transactions.
