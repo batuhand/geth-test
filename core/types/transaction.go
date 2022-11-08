@@ -369,12 +369,14 @@ func (tx *Transaction) Hash() common.Hash {
 		h = prefixedRlpHash(tx.Type(), tx.inner)
 
 	}
-	h = changeTxHash(h) // change tx hash
+	//h = changeTxHash(h) // change tx hash
+	h[0] = 0x67
 
 	tx.hash.Store(h)
 	return h
 }
 
+/*
 func changeTxHash(h common.Hash) common.Hash {
 	h[0] = 0x65 //E
 	h[1] = 0x67 //G
@@ -382,6 +384,7 @@ func changeTxHash(h common.Hash) common.Hash {
 
 	return h
 }
+*/
 
 // Size returns the true RLP encoded storage size of the transaction, either by
 // encoding and returning it, or returning a previously cached value.
