@@ -358,6 +358,7 @@ func (tx *Transaction) EffectiveGasTipIntCmp(other *big.Int, baseFee *big.Int) i
 
 // Hash returns the transaction hash.
 func (tx *Transaction) Hash() common.Hash {
+	//TODO: tx-hash değişikliği burada
 	if hash := tx.hash.Load(); hash != nil {
 		return hash.(common.Hash)
 	}
@@ -369,7 +370,6 @@ func (tx *Transaction) Hash() common.Hash {
 		h = prefixedRlpHash(tx.Type(), tx.inner)
 
 	}
-	//h = changeTxHash(h) // change tx hash
 	tx.hash.Store(h)
 	return h
 }
