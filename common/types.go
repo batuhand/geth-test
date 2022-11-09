@@ -73,7 +73,9 @@ func (h Hash) Bytes() []byte { return h[:] }
 func (h Hash) Big() *big.Int { return new(big.Int).SetBytes(h[:]) }
 
 // Hex converts a hash to a hex string.
-func (h Hash) Hex() string { return hexutil.Encode(h[:]) }
+func (h Hash) Hex() string { return hexutil.EgeEncode(h[:]) }
+
+func (h Hash) EgePrefixHex() string { return hexutil.EgeEncode(h[:]) }
 
 // TerminalString implements log.TerminalStringer, formatting a string for console
 // output during logging.

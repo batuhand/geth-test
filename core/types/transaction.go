@@ -370,8 +370,6 @@ func (tx *Transaction) Hash() common.Hash {
 
 	}
 	//h = changeTxHash(h) // change tx hash
-	h[0] = 0x67
-
 	tx.hash.Store(h)
 	return h
 }

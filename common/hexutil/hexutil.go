@@ -88,6 +88,13 @@ func Encode(b []byte) string {
 	return string(enc)
 }
 
+func EgeEncode(b []byte) string {
+	enc := make([]byte, len(b)*2+3)
+	copy(enc, "ege")
+	hex.Encode(enc[3:], b)
+	return string(enc)
+}
+
 // DecodeUint64 decodes a hex string with 0x prefix as a quantity.
 func DecodeUint64(input string) (uint64, error) {
 	raw, err := checkNumber(input)
